@@ -1,0 +1,170 @@
+body {
+	min-height: 100%;
+	font-family: "Helvetica Neue","Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei","sans-serif";
+	line-height: 20px;
+}
+body {
+	height: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background-color: #eee;
+	-webkit-transition: padding-left .25s cubic-bezier(.7, 0, .175, 1) 0;
+	-o-transition: padding-left .25s cubic-bezier(.7, 0, .175, 1) 0;
+	transition: padding-left .25s cubic-bezier(.7, 0, .175, 1) 0;
+	-moz-transition: padding-left .2s ease-out;
+}
+body {
+	font-family: "Helvetica Neue","Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei","sans-serif";
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #383838;
+	background-color: #fff;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+#navigator {
+	z-index: 100;
+}
+
+.navbar {
+	border-radius: 4px;
+}
+
+.navbar {
+	position: relative;
+	min-height: 50px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+}
+
+.navbar-fixed-top {
+	top: 0;
+	border-width: 0 0 1px;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+#navigator .navbar-inner {
+	position: relative;
+	min-height: 50px;
+	background-color: rgba(255,255,255,0.97);
+	-webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+}
+
+#navigator .navbar-inner>div {
+	position: relative;
+}
+
+#navigator .nav-first {
+	position: relative;
+	float: left;
+	height: 50px;
+}
+
+#navigator .nav-first>a {
+	display: inline-block;
+	height: 50px;
+	padding: 5px 35px;
+	color: #383838;
+	text-align: center;
+	-webkit-transition: background-color 218ms ease, color 218ms ease;
+	-o-transition: background-color 218ms ease, color 218ms ease;
+	transition: background-color 218ms ease, color 218ms ease;
+}
+
+#navigator .nav-handler {
+	position: relative;
+	float: left;
+	height: 50px;
+}
+
+#navigator .nav-handler>a {
+	display: inline-block;
+	height: 50px;
+	padding: 15px 25px;
+	font-size: 16px;
+	color: #383838;
+	text-align: center;
+	-webkit-transition: background-color 218ms ease, color 218ms ease;
+	-o-transition: background-color 218ms ease, color 218ms ease;
+	transition: background-color 218ms ease, color 218ms ease;
+}
+
+#navigator .logo {
+	font-size:30px;
+ 	background:#fff;
+ 	color:#333;
+ 	font-weight:bold;
+ 	font-family:"SimHei";
+}
+
+#navigator .navbar-inner .nav-handler-set {
+	position: relative;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+#navigator .nav-handler.nav-separate {
+	border-right: 1px solid rgba(0,0,0,0.07);
+}
+
+#navigator .create-handler {
+	font-size: 18px;
+}
+.guide-handler {
+	position: relative;
+}
+
+#navigator .navbar-inner .avatar {
+	float: left;
+	margin: -2px 10px 0 0;
+}
+.avatar {
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+.img-24 {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-size: 24px 24px;
+	background-color: #eee;
+}
+.img-circle {
+	border-radius: 50%;
+}
+
+#navigator .nav-handler>a.search-handler {
+	width: 100%;
+	padding: 17px 0 14px 0;
+}
+
+#navigator .search {
+	width: 59px;
+}
+
+#content {
+margin-top: 50px;
+background-color: #000;
+}
+
