@@ -17,7 +17,7 @@
   
   <select id="getUserByEmail" parameterType="String" resultMap="userMap">
     <![CDATA[
-        SELECT * FROM _user WHERE email = #{email}
+        SELECT * FROM _user WHERE email = #{email} AND is_active = 1
     ]]>
   </select>
   

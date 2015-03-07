@@ -1,5 +1,7 @@
 package com.ntu.pms.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ntu.pms.constant.PageNameConstant;
+import com.ntu.pms.dto.ResultObjectDTO;
 import com.ntu.pms.model.User;
 import com.ntu.pms.service.UserService;
 
@@ -30,14 +33,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "checkUser", method = RequestMethod.POST)
-    public User login(User user) {
+    public User login(User user, HttpSession session) {
         user = userService.checkUser(user);
+        session.setAttribute("user", user);
         return user;
     }
 
     @RequestMapping(value = "saveUser", method = RequestMethod.POST)
-    public User saveUser(User user) {
-        userService.saveUser(user);
-        return user;
+    public ResultObjectDTO saveUser(User user) {
+        ResultObjectDTO resultObjectDTO = userService.saveUser(user);
+        return resultObjectDTO;
     }
 }
