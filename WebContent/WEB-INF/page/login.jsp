@@ -25,14 +25,14 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="password" id="password" placeholder="请输入密码">
+      <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
       <span class="glyphicon form-control-feedback" style="padding-right: 20px"></span>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">登陆</button>
-      <button type="button" class="btn btn-default" style="margin-left: 40px">重置</button>
+      <button type="button" class="btn btn-default" id="reset" style="margin-left: 40px">重置</button>
       <button type="button" class="btn btn-link" style="margin-left: 110px;">注册新账户</button>
     </div>
   </div>

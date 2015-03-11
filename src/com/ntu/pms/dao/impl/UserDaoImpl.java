@@ -11,7 +11,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
 
     private static final String SQL_ID_GET_MAX_JOB_NUMBER = ".getMaxJobNumber";
     private static final String SQL_ID_CHECK_USER = ".checkUser";
-    private static final String SQL_ID_GET_USER_BY_EMAIL = "¡£getUserByEmail";
+    private static final String SQL_ID_GET_USER_BY_EMAIL = ".getUserByEmail";
 
     @Override
     public String getMaxJobNumber() {

@@ -23,7 +23,7 @@
                 </div> 
                 <div class="nav-handler"> 
                     <a class="my-handler" data-gta="event" data-label="enter my"> 我的 
-                        <span class="badge">1</span> 
+                        <span class="badge">${mesCount }</span> 
                     </a> 
                 </div> 
                 <div class="nav-handler"> 
