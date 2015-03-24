@@ -4,59 +4,68 @@ import java.util.Date;
 
 public class ProjectDTO {
 
-	private int id;
-	private String name;
-	private String description;
-	private Date createTime;
-	private int creatorId;
-	private boolean isActive;
+    private int id;
+    private String name;
+    private String description;
+    private Date createTime;
+    private int creatorId;
+    private int state;
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public int getCreatorId() {
-		return creatorId;
-	}
+    public int getCreatorId() {
+        return creatorId;
+    }
 
-	public void setCreatorId(int creatorId) {
-		this.creatorId = creatorId;
-	}
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
 
-	public boolean isActive() {
-		return isActive;
-	}
+    public int getState() {
+        return state;
+    }
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("ProjectDTO [id=").append(id).append(", name=").append(name).append(", description=")
+                .append(description).append(", createTime=").append(createTime).append(", creatorId=")
+                .append(creatorId).append(", state=").append(state);
+
+        return builder.toString();
+    }
 
 }

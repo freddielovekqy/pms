@@ -6,12 +6,59 @@
     <id column="id" property="id"/>
     <result column="name" property="name"/>
     <result column="description" property="description"/>
+    <result column="create_time" property="createTime"/>
+    <result column="creator" property="creatorId"/>
+    <result column="state" property="state"/>
+  </resultMap>
+  
+  <resultMap type="com.ntu.pms.dto.ProjectDTO" id="projectDTOMap">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="description" property="description"/>
+    <result column="create_time" property="createTime"/>
+    <result column="creator" property="creatorId"/>
+    <result column="state" property="state"/>
   </resultMap>
   
   <select id="getById" parameterType="Integer" resultMap="projectMap">
     <![CDATA[
-        SELECT * FROM _project WHERE id = #{id} AND is_active = 1
+        SELECT * FROM _project WHERE id = #{id} AND state <> 0
+    ]]>
+  </select>
+
+  <select id="getDTOById" parameterType="Integer" resultMap="projectDTOMap">
+    <![CDATA[
+        SELECT * FRPM _project WHERE id = #{id} AND state <> 0
     ]]>
   </select>
   
+  <select id="findProjectDTOByUser" parameterType="Integer" resultMap="projectDTOMap">
+    <![CDATA[
+        SELECT
+            p.*
+        FROM
+            _project p
+            LEFT OUTER JOIN _project_user pu ON p.id = pu.project_id
+        WHERE
+            pu.user_id = #{userId}
+            AND p.state <> 0
+    ]]>
+  </select>
+  
+  <update id="update" parameterType="Project">
+    <![CDATA[
+        UPDATE
+            _project
+        SET
+            name = #{name}, description = #{description}, state = #{state}
+        WHERE
+            id = #{id}
+    ]]>
+  </update>
+  
+  <update id="delete" parameterType="Integer">
+    <![CDATA[
+        UPDATE _project SET state = 0 WHERE id = #{id}
+    ]]>
+  </update>
 </mapper>

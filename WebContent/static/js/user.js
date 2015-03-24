@@ -5,7 +5,7 @@ $(function(){
 			$(this).next().addClass("glyphicon-remove");
 		}
 	});
-	
+
 	$(".form-control").focus(function() {
 		if ($(this).attr("id") == "password") {
 			$(this).attr("placeholder", "请输入密码");

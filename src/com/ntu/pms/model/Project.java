@@ -11,7 +11,7 @@ public class Project extends BaseModel {
     private String description;
     private Date createTime;
     private int creatorId;
-    private boolean isActive;
+    private int state;
 
     public int getId() {
         return id;
@@ -53,12 +53,20 @@ public class Project extends BaseModel {
         this.creatorId = creatorId;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public int getState() {
+        return state;
     }
 
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setState(int state) {
+        this.state = state;
     }
 
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Project [id=").append(id).append(", name=").append(name).append(", description=")
+                .append(description).append(", createTime=").append(createTime).append(", creatorId=")
+                .append(creatorId).append(", state=").append(state);
+
+        return builder.toString();
+    }
 }
