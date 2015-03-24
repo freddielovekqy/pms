@@ -27,4 +27,11 @@ public abstract class BlockAbstract {
 
     protected abstract void execute(PageContext pageContext);
 
+    public String getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(String template) {
+        this.template = template;
+    }
 }

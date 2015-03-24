@@ -60,5 +60,6 @@
         </tx:attributes>
     </tx:advice>
     
+    <bean class="com.ntu.pms.utils.SpringUtil" />
     
 </beans>

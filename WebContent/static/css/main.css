@@ -1,0 +1,48 @@
+.projects {
+	top: 101px;
+	width: 1160px;
+	margin: 101px 94.5px;
+}
+
+.my-project-title {
+	font-size:18px;
+	top: 41px;
+}
+
+.project {
+	width: 273px;
+	height: 134px;
+	margin: 15px;
+	position: relative;
+	cursor: hand;
+	background-image: url(../image/project.jpg);
+	display: inline-table;
+}
+
+.project-attr {
+	width: 273px;
+}
+
+.project-name {
+	font-size: 18px;
+	color: #fff;
+	margin: auto; 
+	padding: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.project-intro {
+	font-size: 13px;
+	color: #fff;
+	padding-left: 15px;
+}
+
+.filed-projects {
+	margin-top: 35px;
+}
+
+.filed-project-title {
+	font-size:18px;
+}

@@ -22,13 +22,13 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public ModelAndView initLoginPage() {
-        ModelAndView mav = new ModelAndView(PageNameConstant.PAGE_NAME_LOGIN);
+        ModelAndView mav = new ModelAndView(PageNameConstant.PAGE_NAME_USER_LOGIN);
         return mav;
     }
 
     @RequestMapping(value = "register", method = RequestMethod.GET)
     public ModelAndView register() {
-        ModelAndView mav = new ModelAndView(PageNameConstant.PAGE_NAME_REGISTER);
+        ModelAndView mav = new ModelAndView(PageNameConstant.PAGE_NAME_USER_REGISTER);
         return mav;
     }
 
