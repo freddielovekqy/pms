@@ -5,23 +5,38 @@
 	<div id="" class="">
 		<span class="my-project-title">个人项目</span>
 		<br/><br>
-		<c:forEach var="projectDTO" items="${projectDTOs}" varStatus="status">
-			<div id="" class="project">
-				<div id="projectAttr" class="project-attr">
-					<h3 class="project-name">${projectDTO.name }</h3>
-					<span class="project-intro">${projectDTO.description }</span>
-				</div>
-			</div>
-		</c:forEach>
+        <c:choose>
+            <c:when test="${not empty onlineProjectDTOs }">
+                <c:forEach var="projectDTO" items="${onlineProjectDTOs}" varStatus="status">
+		            <div id="" class="project">
+		                <div id="projectAttr" class="project-attr">
+		                    <h3 class="project-name">${projectDTO.name }</h3>
+		                    <span class="project-intro">${projectDTO.description }</span>
+		                </div>
+		            </div>
+		        </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <div class="no-project">
+                    <span>没有项目</span>&nbsp;&nbsp;
+                    <a>创建</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
+		
 	</div>
 	<div id="" class="filed-projects">
 		<span class="filed-project-title">已归档项目</span>
 		<br><br>
-		<div id="" class="project">
-			<div id="projectAttr" class="project-attr">
-				<h3 class="project-name">PMS</h3>
-				<span class="project-intro">项目管理系统</span>
-			</div>
-		</div>
+		<c:if test="${not empty filedProjectDTOs }">
+		    <c:forEach var="projectDTO" items="${filedProjectDTOs}" varStatus="status">
+		        <div id="" class="project">
+	                <div id="projectAttr" class="project-attr">
+	                    <h3 class="project-name">${projectDTO.name }</h3>
+	                    <span class="project-intro">${projectDTO.description }</span>
+	                </div>
+	            </div>
+		    </c:forEach>
+		</c:if>
 	</div>
 </div>

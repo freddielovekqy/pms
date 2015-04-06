@@ -13,10 +13,16 @@ import com.ntu.pms.model.Project;
 public class ProjectDaoImpl extends BaseDaoImpl<Project, Integer> implements ProjectDao {
 
     private static final String SQL_ID_FIND_PROJECT_DTO_BY_USER = ".findProjectDTOByUser";
-    
+    private static final String SQL_ID_FIND_FILED_PROJECT_DTO_BY_USER = ".findFiledProjectDTOByUser";
+
     @Override
     public List<ProjectDTO> findProjectDTOByUser(int userId) {
         return getSqlSession().selectList(Project.class.getName() + SQL_ID_FIND_PROJECT_DTO_BY_USER, userId);
+    }
+
+    @Override
+    public List<ProjectDTO> findFiledProjectDTOByUser(int userId) {
+        return getSqlSession().selectList(Project.class.getName() + SQL_ID_FIND_FILED_PROJECT_DTO_BY_USER, userId);
     }
 
 }

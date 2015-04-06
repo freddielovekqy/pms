@@ -9,6 +9,14 @@
 	top: 41px;
 }
 
+.no-project {
+    font-size: 17px;
+}
+
+.no-project>a {
+    font-size: 19px;
+}
+
 .project {
 	width: 273px;
 	height: 134px;

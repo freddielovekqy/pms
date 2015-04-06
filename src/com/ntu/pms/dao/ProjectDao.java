@@ -8,4 +8,6 @@ import com.ntu.pms.model.Project;
 public interface ProjectDao extends BaseDao<Project, Integer> {
 
     List<ProjectDTO> findProjectDTOByUser(int userId);
+
+    List<ProjectDTO> findFiledProjectDTOByUser(int userId);
 }
