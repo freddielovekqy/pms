@@ -10,13 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>/static/css/main.css" />
 	<title>main</title>
 </head>
-<body class="vertical-scroll windows chrome with-mini-member-bar" data-category="home" style="min-height:154px;background-color: #eee;">
+<body class="vertical-scroll windows chrome with-mini-member-bar" data-category="home" style="min-height:144px;background-color: #eee;overflow-y：hidden;">
 	<f:block name="header"/>
 	<f:block name="project_simple"/>
 </body>
 <script type="text/javascript" src="<%=basePath %>/static/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>/static/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=basePath %>/static/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>/static/dist/js/npm.js"></script>
 <script type="text/javascript" src="<%=basePath %>/static/js/header.js"></script>
 </html>

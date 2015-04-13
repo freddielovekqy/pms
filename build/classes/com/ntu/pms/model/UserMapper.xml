@@ -7,9 +7,26 @@
     <result column="name" property="name"/>
     <result column="job_number" property="jobNumber"/>
     <result column="email" property="email"/>
+    <result column="image" property="image"/>
+    <result column="is_active" property="isActive"/>
+  </resultMap>
+  
+  <resultMap type="com.ntu.pms.dto.UserDTO" id="userDTOMap">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="job_number" property="jobNumber"/>
+    <result column="email" property="email"/>
+    <result column="image" property="image"/>
+    <result column="is_active" property="isActive"/>
   </resultMap>
   
   <select id="getById" parameterType="Integer" resultMap="userMap">
+    <![CDATA[
+        SELECT * FROM _user WHERE id = #{id}
+    ]]>
+  </select>
+  
+  <select id="getDTOById" parameterType="Integer" resultMap="userDTOMap">
     <![CDATA[
         SELECT * FROM _user WHERE id = #{id}
     ]]>
@@ -43,7 +60,7 @@
   <update id="update" parameterType="User">
     <![CDATA[
       UPDATE _user u SET
-        u.user_name = #{name}
+        u.user_name = #{name} u.password = #{password}
       WHERE u.uuid = #{uuid}
     ]]>
   </update>

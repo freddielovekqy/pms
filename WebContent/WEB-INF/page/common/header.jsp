@@ -30,8 +30,8 @@
             </div>
             <div class="nav-handler nav-separate my-set">
                 <a data-toggle="dropdown" data-gta="event" data-label="user bar|show user menu">
-                    <div class="avatar img-circle img-24" style="background-image:url(https://mailimg.teambition.com/logos/19.png);"></div>
-                    <span class="user-name">王超</span>
+                    <div class="avatar img-circle img-24" style="background-image:url(${userDTO.image});"></div>
+                    <span class="user-name"  data-toggle="modal" data-target="#profile">王超</span>
                 </a>
             </div>
             <div class="nav-handler search"> 
@@ -42,3 +42,14 @@
         </div>
     </div>
 </header>
+<!-- Profile -->
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <a href="<%=basePath%>/user/initEditUser">个人设置</a>
+                <a>退出登录</a>
+            </div>
+        </div>
+    </div>
+</div>

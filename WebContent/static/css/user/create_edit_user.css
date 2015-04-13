@@ -20,3 +20,7 @@ button
 	margin-top: 20px;
 }
 
+.form-group>span{
+	cursor: hand;
+	color: #03a9f4;
+}

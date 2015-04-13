@@ -32,8 +32,16 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
+  <filter>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>com.ntu.pms.filter.LoginFilter</filter-class>
+  </filter>
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 

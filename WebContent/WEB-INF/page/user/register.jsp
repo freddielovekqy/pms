@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=basePath %>/static/dist/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath %>/static/css/register.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath %>/static/css/user/create_edit_user.css" />
 <title>注册 PMS账号</title>
 </head>
 <body>
-    <img src="<%=basePath %>/static/image/topbanner.jpg" class="img-responsive" alt="Responsive image">
+    <img src="http://localhost:8080/PMS/data/topbanner.jpg" class="img-responsive" alt="Responsive image">
     <form role="form" action="" method="post" class="registerForm">
       <div class="form-group">
         <input type="email" class="form-control input-lg" id="email" placeholder="邮箱">
@@ -26,8 +26,6 @@
 	 
 </body>
 <script type="text/javascript" src="<%=basePath%>/static/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/static/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/static/dist/js/npm.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user.js"></script>
 </html>
