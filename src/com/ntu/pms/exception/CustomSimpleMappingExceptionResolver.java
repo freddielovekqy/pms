@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 public class CustomSimpleMappingExceptionResolver extends SimpleMappingExceptionResolver {
 
     private static final Logger LOGGER = Logger.getLogger(CustomSimpleMappingExceptionResolver.class);
+    @SuppressWarnings("unused")
     private HttpServletRequest request;
 
     @Override
@@ -33,6 +34,7 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
         }
     }
 
+    @SuppressWarnings("unused")
     private boolean isAjaxRequest(HttpServletRequest request) {
         String header = request.getHeader("X-Requested-With");
 
