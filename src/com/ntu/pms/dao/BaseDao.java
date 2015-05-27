@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BaseDao<T, K> {
 
-    public Boolean add(T obj);
+    public int add(T obj);
 
     public Boolean delete(K id);
 

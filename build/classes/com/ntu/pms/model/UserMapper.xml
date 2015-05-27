@@ -60,8 +60,9 @@
   <update id="update" parameterType="User">
     <![CDATA[
       UPDATE _user u SET
-        u.user_name = #{name} u.password = #{password}
-      WHERE u.uuid = #{uuid}
+        u.name = #{name},
+        u.password = #{password}
+      WHERE u.id = #{id}
     ]]>
   </update>
   

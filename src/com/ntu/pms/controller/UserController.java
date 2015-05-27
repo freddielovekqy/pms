@@ -36,10 +36,19 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "checkUser", method = RequestMethod.POST)
-    public User login(User user, HttpSession session) {
-        user = userService.checkUser(user);
-        session.setAttribute(OtherConstants.CURRRENT_USER, user);
-        return user;
+    public UserDTO login(UserDTO userDTO, HttpSession session) {
+        userDTO = userService.checkUser(userDTO);
+        setBaseDataMap(OtherConstants.CURRRENT_USER, userDTO);
+        session.setAttribute(OtherConstants.CURRRENT_USER, userDTO);
+        return userDTO;
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpSession session) {
+        ModelAndView mav = new ModelAndView(PageNameConstant.PAGE_NAME_USER_LOGOUT);
+        removeBaseData(OtherConstants.CURRRENT_USER);
+        session.removeAttribute(OtherConstants.CURRRENT_USER);
+        return mav;
     }
 
     @RequestMapping(value = "saveUser", method = RequestMethod.POST)
@@ -56,9 +65,12 @@ public class UserController extends BaseController {
         return mav;
     }
 
-    @RequestMapping(value = "updateUser")
-    public UserDTO updateUser(UserDTO userDTO) {
-
-        return null;
+    @RequestMapping(value = "updateUser", method = RequestMethod.POST)
+    public UserDTO updateUser(UserDTO userDTO, HttpSession session) throws BussinessException {
+        userDTO = userService.updateUser(userDTO);
+        setBaseDataMap(OtherConstants.CURRRENT_USER, userDTO);
+        session.setAttribute(OtherConstants.CURRRENT_USER, userDTO);
+        return userDTO;
     }
+
 }

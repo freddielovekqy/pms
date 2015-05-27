@@ -7,7 +7,7 @@ public class User {
     private String password;
     private String jobNumber;
     private String email;
-    private String image;
+    private String image = "http://localhost:8080/PMS/data/user_111_20150426.png";
     private boolean isActive = true;
 
     public User() {
@@ -101,6 +101,21 @@ public class User {
 
         public Builder password(String password) {
             this.password = password;
+            return this;
+        }
+
+        public Builder jobNumber(String jobNumber) {
+            this.jobNumber = jobNumber;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder image(String image) {
+            this.image = image;
             return this;
         }
 

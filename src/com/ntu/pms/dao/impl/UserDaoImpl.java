@@ -38,4 +38,10 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
         return getSqlSession().selectOne(User.class.getName() + SQL_ID_GET_DTO_BY_ID, id);
     }
 
+    @Override
+    public int getUserCountByEmail(String email) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
 }

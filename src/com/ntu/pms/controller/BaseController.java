@@ -9,16 +9,14 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.ntu.pms.constant.OtherConstants;
-import com.ntu.pms.model.User;
+import com.ntu.pms.dto.UserDTO;
 
 public class BaseController {
 
     protected Map<String, Object> baseDataMap;
 
-    public User getCurrentLoginUser() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        HttpSession session = attr.getRequest().getSession();
-        User currentUser = (User) session.getAttribute(OtherConstants.CURRRENT_USER);
+    public UserDTO getCurrentLoginUser() {
+        UserDTO currentUser = (UserDTO) getSessionAttribute(OtherConstants.CURRRENT_USER);
         return currentUser;
     }
 

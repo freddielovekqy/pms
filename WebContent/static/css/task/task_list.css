@@ -1,0 +1,55 @@
+.sprint-list {
+    margin-top: 66px;
+    width: 140px;
+    margin-left: 60px;
+}
+
+.task-table {
+    margin: 30px 0px 30px 60px;
+    width: 1171px;
+}
+
+tr {
+    height: 40px;
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 40px;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.lock {
+    margin-left: 8px;
+    margin-top: -8px;
+}
+
+.show-more-task {
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+td>a {
+    color: #000;
+}
+
+td>a:hover {
+    color: #03a9f4;
+}
+
+.no-content {
+    background-color: #eee;
+}
+
+.operation-icon {
+    margin-left: 10px;
+}
+
+.page {
+    margin-bottom: 40px;
+    margin-right: 56px;
+    float: right;
+}

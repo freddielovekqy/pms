@@ -2,35 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 
 <mapper namespace="com.ntu.pms.model.Project">
-  <resultMap type="Project" id="projectMap">
-    <id column="id" property="id"/>
-    <result column="name" property="name"/>
-    <result column="description" property="description"/>
-    <result column="create_time" property="createTime"/>
-    <result column="creator" property="creatorId"/>
-    <result column="state" property="state"/>
-  </resultMap>
+    <resultMap type="Project" id="projectMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator" property="creatorId"/>
+        <result column="state" property="state"/>
+        <result column="public" property="isPublic"/>
+    </resultMap>
   
-  <resultMap type="com.ntu.pms.dto.ProjectDTO" id="projectDTOMap">
-    <id column="id" property="id"/>
-    <result column="name" property="name"/>
-    <result column="description" property="description"/>
-    <result column="create_time" property="createTime"/>
-    <result column="creator" property="creatorId"/>
-    <result column="state" property="state"/>
-  </resultMap>
+    <resultMap type="com.ntu.pms.dto.ProjectDTO" id="projectDTOMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="creator_image" property="creatorImage"/>
+        <result column="creator_email" property="creatorEmail"/>
+        <result column="state" property="state"/>
+        <result column="public" property="isPublic"/>
+        <result column="add_member_url" property="addMemberUrl"/>
+    </resultMap>
   
-  <select id="getById" parameterType="Integer" resultMap="projectMap">
-    <![CDATA[
-        SELECT * FROM _project WHERE id = #{id} AND state <> 0
-    ]]>
-  </select>
+    <select id="getById" parameterType="Integer" resultMap="projectMap">
+        <![CDATA[
+            SELECT * FROM _project WHERE id = #{id} AND state <> 0
+        ]]>
+    </select>
 
-  <select id="getDTOById" parameterType="Integer" resultMap="projectDTOMap">
-    <![CDATA[
-        SELECT * FRPM _project WHERE id = #{id} AND state <> 0
-    ]]>
-  </select>
+    <select id="getDTOById" parameterType="Integer" resultMap="projectDTOMap">
+        <![CDATA[
+            SELECT
+                 p.*, u.name creator_name, u.email creator_email, u.image creator_image
+            FROM
+                _project p
+                LEFT OUTER JOIN _user u ON p.creator = u.id
+            WHERE
+                p.id = #{id}
+                AND p.state <> 0
+        ]]>
+    </select>
+  
+    <select id="findAllProject" resultMap="projectMap">
+        <![CDATA[
+            SELECT id FROM _project WHERE state = 1
+        ]]>
+    </select>
   
   <select id="findProjectDTOByUser" parameterType="Integer" resultMap="projectDTOMap">
     <![CDATA[
@@ -58,16 +77,42 @@
     ]]>
   </select>
   
+  <select id="getProjectByUrl" parameterType="String" resultMap="projectDTOMap">
+    <![CDATA[
+        SELECT
+             p.*, u.name creator_name, u.email creator_email, u.image creator_image
+        FROM
+            _project p
+            LEFT OUTER JOIN _user u ON p.creator = u.id
+        WHERE
+            p.add_member_url = #{addMemberUrl}
+            AND p.state <> 0
+    ]]>
+  </select>
+  
+  <update id="updateProjectUrl" parameterType="Map">
+    <![CDATA[
+        UPDATE _project SET add_member_url = #{addMemberUrl} WHERE id = #{projectId}
+    ]]>
+  </update>
+  
   <update id="update" parameterType="Project">
     <![CDATA[
         UPDATE
             _project
         SET
-            name = #{name}, description = #{description}, state = #{state}
+            name = #{name}, description = #{description}, state = #{state}, public = #{isPublic}
         WHERE
             id = #{id}
     ]]>
   </update>
+  
+  <insert id="add" parameterType="Project" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    <![CDATA[
+        INSERT INTO _project(name, description, create_time, creator, state, public)
+        VALUES(#{name}, #{description}, #{createTime}, #{creatorId}, #{state}, #{isPublic})
+    ]]>
+  </insert>
   
   <update id="delete" parameterType="Integer">
     <![CDATA[

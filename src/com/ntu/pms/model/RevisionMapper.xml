@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.ntu.pms.model.Revision">
+    <resultMap type="Revision" id="revisionMap">
+        <id column="id" property="id"/>
+        <result column="description" property="description"/>
+        <result column="object_id" property="objectId"/>
+        <result column="object_name" property="objectName"/>
+        <result column="type" property="type"/>
+        <result column="project_id" property="projectId"/>
+        <result column="is_active" property="isActive"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator" property="creatorId"/>
+    </resultMap>
+    
+    <resultMap type="com.ntu.pms.dto.RevisionDTO" id="revisionDTOMap">
+        <id column="id" property="id"/>
+        <result column="description" property="description"/>
+        <result column="object_id" property="objectId"/>
+        <result column="object_name" property="objectName"/>
+        <result column="type" property="type"/>
+        <result column="project_id" property="projectId"/>
+        <result column="is_active" property="isActive"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="creator_image" property="creatorImage"/>
+    </resultMap>
+    
+    <insert id="add" parameterType="Revision" useGeneratedKeys="true" keyColumn="id">
+        <![CDATA[
+            INSERT INTO _revision(description, object_id, object_name, type, is_active, create_time, creator, project_id)
+            VALUES(#{description}, #{objectId}, #{objectName}, #{type}, #{isActive}, #{createTime}, #{creatorId}, #{projectId})
+        ]]>
+    </insert>
+    
+    <select id="findRevisionByTime" parameterType="Map" resultMap="revisionDTOMap">
+        <![CDATA[
+            SELECT 
+                r.*, u.name creator_name, u.image creator_image
+            FROM 
+                _revision r
+                LEFT OUTER JOIN _user u ON r.creator = u.id
+            WHERE
+                r.project_id = #{projectId} 
+                AND TO_DAYS(#{createTime}) - TO_DAYS(r.create_time) = 0
+                AND r.is_active = 1
+            ORDER BY r.create_time DESC
+        ]]>
+    </select>
+    
+    <select id="findLastDateDynamic" parameterType="Map" resultMap="revisionDTOMap">
+        <![CDATA[
+            SELECT
+                r.*, u.name creator_name, u.image creator_image
+            FROM 
+                _revision r
+                LEFT OUTER JOIN _user u ON r.creator = u.id
+            WHERE 
+                r.project_id = #{projectId}
+                AND TO_DAYS(r.create_time) = (
+                    SELECT 
+                        TO_DAYS(create_time) 
+                    FROM 
+                        _revision 
+                    WHERE
+                        project_id = #{projectId}
+                        AND  TO_DAYS(NOW()) - TO_DAYS(create_time) <> 0
+                        AND is_active = 1
+                    ORDER BY create_time DESC 
+                    limit 1
+                )
+            ORDER BY r.create_time DESC
+        ]]>
+    </select>
+</mapper>

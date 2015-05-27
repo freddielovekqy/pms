@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.ntu.pms.model.Task">
+    <resultMap type="Task" id="taskMap">
+        <id column="id" property="id"/>
+        <result column="serial_number" property="serialNumber"/>
+        <result column="name" property="name"/>
+        <result column="owner" property="owner"/>
+        <result column="description" property="description"/>
+        <result column="state" property="state"/>
+        <result column="creator" property="creatorId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="blocked" property="blocked"/>
+        <result column="estimate" property="estimate"/>
+        <result column="todo" property="todo"/>
+        <result column="project_id" property="projectId"/>
+        <result column="ticket_id" property="ticketId"/>
+        <result column="sprint_id" property="sprintId"/>
+        <result column="is_active" property="isActive"/>
+        <result column="degree" property="degree"/>
+    </resultMap>
+    
+    <resultMap type="com.ntu.pms.dto.TaskDTO" id="taskDTOMap">
+        <id column="id" property="id"/>
+        <result column="serial_number" property="serialNumber"/>
+        <result column="name" property="name"/>
+        <result column="owner" property="owner"/>
+        <result column="owner_name" property="ownerName"/>
+        <result column="description" property="description"/>
+        <result column="state" property="state"/>
+        <result column="creator" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="blocked" property="blocked"/>
+        <result column="estimate" property="estimate"/>
+        <result column="todo" property="todo"/>
+        <result column="project_id" property="projectId"/>
+        <result column="ticket_id" property="ticketId"/>
+        <result column="sprint_id" property="sprintId"/>
+        <result column="is_active" property="isActive"/>
+        <result column="degree" property="degree"/>
+    </resultMap>
+    
+    <select id="getById" parameterType="Integer" resultMap="taskMap">
+        SELECT * FROM _task WHERE id = #{taskId} AND is_active = 1
+    </select>
+    
+    <select id="getTaskDTO" parameterType="Integer" resultMap="taskDTOMap">
+        <![CDATA[
+            SELECT
+                t.*, o.name owner_name, u.name creator_name
+            FROM
+                _task t
+                LEFT OUTER JOIN _user o ON o.id = t.owner
+                LEFT OUTER JOIN _user u ON u.id = t.creator
+            WHERE
+                t.id = #{taskId}
+                AND t.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getTaskCountBySprint" parameterType="Map" resultType="Integer">
+        <![CDATA[
+            SELECT COUNT(*) FROM _task WHERE project_id = #{projectId} AND sprint_id = #{sprintId} AND is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getCompletedTaskCountBySprint" parameterType="Map" resultType="Integer">
+        <![CDATA[
+            SELECT
+                COUNT(*)
+            FROM
+                _task
+            WHERE
+                project_id = #{projectId}
+                AND sprint_id = #{sprintId}
+                AND state = '完成'
+                AND is_active = 1
+        ]]>
+    </select>
+    
+    <select id="findTaskDTOsByTicket" parameterType="Map" resultMap="taskDTOMap">
+        <![CDATA[
+            SELECT
+                t.*, o.name owner_name, u.name creator_name
+            FROM
+                _task t
+                LEFT OUTER JOIN _user o ON o.id = t.owner
+                LEFT OUTER JOIN _user u ON u.id = t.creator
+            WHERE
+                t.ticket_id = #{ticketId}
+                AND t.project_id = #{projectId}
+                AND t.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getRestTaskTimeBySprint" parameterType="Map" resultType="Double">
+        <![CDATA[
+            SELECT
+                SUM(todo)
+            FROM
+                _task
+            WHERE
+                project_id = #{projectId}
+                AND sprint_id = #{sprintId}
+                AND is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getTaskChartData" parameterType="Date" resultType="Map">
+        <![CDATA[
+            SELECT
+                DATE_FORMAT(end_time, '%m/%d') endTime, COUNT(id) taskCount
+            FROM
+                _task
+            WHERE
+                end_time >= #{endTime}
+                AND project_id = #{projectId}
+                AND is_active = 1
+            GROUP BY endTime
+            ORDER BY end_time ASC
+        ]]>
+    </select>
+    
+    <select id="getBlockedTaskCountByTicket" parameterType="Integer" resultType="Integer">
+        <![CDATA[
+            SELECT COUNT(id) FROM _task WHERE ticket_id = #{ticketId} AND is_active = 1 AND blocked = 1
+        ]]>
+    </select>
+    
+    <update id="finishedAllTaskInTicket" parameterType="Map">
+        <![CDATA[
+            UPDATE
+                _task
+            SET
+                todo = 0, state = '完成', blocked = 0
+            WHERE
+                project_id = #{projectId}
+                AND ticket_id = #{ticketId}
+        ]]>
+    </update>
+    
+    <update id="updateTaskWhenTicketDeleted" parameterType="Map">
+        <![CDATA[
+            UPDATE _task 
+            SET
+                ticket_id = #{defaultTicketId} 
+            WHERE 
+                ticket_id = #{ticketId}
+                AND project_id = #{projectId}
+                AND sprint_id = #{sprintId}
+        ]]>
+    </update>
+    
+    <update id="deleteTaskByTicket" parameterType="Map">
+        <![CDATA[
+            UPDATE _task SET is_active = 0 WHERE ticket_id = #{ticketId} AND project_id = #{projectId}
+        ]]>
+    </update>
+    
+    <update id="moveTaskToCurrentSprint" parameterType="Map">
+        <![CDATA[
+            UPDTAE _task
+            SET sprint_id = #{sprintId}
+            WHERE ticket_id IN (
+                    SELECT id FROM _ticket WHERE state <> '完成'
+                )
+                AND project_id = #{projectId}
+        ]]>
+    </update>
+    
+    <update id="finishAllSprintTask" parameterType="Integer">
+        <![CDATA[
+            UPDATE _task
+            SET todo = 0, state = '完成', blocked = 0, end_time = NOW()
+            WHERE ticket_id IN (
+                    SELECT id FROM _ticket WHERE state <> '完成'
+                )
+                AND project_id = #{projectId}
+        ]]>
+    </update>
+    
+    <update id="delete" parameterType="Integer">
+        <![CDATA[
+            UPDATE _task SET is_active = 0 WHERE id = #{taskId}
+        ]]>
+    </update>
+    
+    <update id="update" parameterType="Task">
+        <![CDATA[
+            UPDATE 
+                _task
+            SET
+                name = #{name},
+                description = #{description},
+                owner = #{owner},
+                state = #{state},
+                blocked = #{blocked},
+                estimate = #{estimate},
+                todo = #{todo},
+                ticket_id = #{ticketId},
+                degree = #{degree},
+                end_time = #{endTime}
+            WHERE
+                id = #{id}
+        ]]>
+    </update>
+    
+    <insert id="add" parameterType="Task" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        <![CDATA[
+            INSERT INTO _task(serial_number, name, description, owner, state, creator, create_time,
+                is_active, blocked, estimate, todo, project_id, sprint_id, ticket_id, degree)
+            VALUES(#{serialNumber}, #{name}, #{description}, #{owner}, #{state}, #{creatorId}, #{createTime},
+                #{isActive}, #{blocked}, #{estimate}, #{todo}, #{projectId}, #{sprintId}, #{ticketId}, #{degree})
+        ]]>
+    </insert>
+</mapper>

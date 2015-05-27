@@ -17,6 +17,7 @@ public class LoginFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+
         String uri = request.getRequestURI();
         boolean doFilter = true;
         String[] noFilters = new String[] { "/images", "/js", "/css", "/user/register", "/user/logout",
@@ -36,6 +37,7 @@ public class LoginFilter extends OncePerRequestFilter {
                 return;
             }
         }
+
         filterChain.doFilter(request, response);
     }
 }

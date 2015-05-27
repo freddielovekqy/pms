@@ -1,0 +1,49 @@
+.project-block {
+    margin-top: 35px;
+    width: 400px;
+    float: left;
+}
+
+.project-block>span {
+    font-size: 18px;
+}
+
+.project-detail-info {
+    width: 400px;
+    background-color: #CCC;
+    float: left;
+    margin-top: 35px;
+}
+
+.project-detail-info>span {
+    font-size: 19px;
+    padding: 18px;
+    display: block;
+}
+
+.project-detail-info .info {
+    padding-left: 30px;
+}
+
+.info-item {
+    height: 67px;
+}
+
+.info .info-label {
+    font-size: 17px;
+    padding-bottom: 4px;
+}
+
+.info .info-text {
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.join-project-button {
+    margin: 187px 0 0 51px;
+    float: left;
+}
+
+.join-project-button>button {
+    width: 170px;
+}

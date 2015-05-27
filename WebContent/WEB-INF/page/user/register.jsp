@@ -22,10 +22,10 @@
       </div>
       <button type="button" class="btn btn-primary btn-lg" id="register" >注 册</button>
       <button type="button" class="btn btn-default btn-lg loginButton">已有账号？登陆</button>
-	 </form>
-	 
+    </form>
 </body>
-<script type="text/javascript" src="<%=basePath%>/static/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/plugin/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/plugin/ajaxfileupload.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user.js"></script>
 </html>

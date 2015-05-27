@@ -12,4 +12,6 @@ public interface UserDao extends BaseDao<User, Integer> {
     User getUserByEmail(String email);
 
     UserDTO getUserDTOById(int id);
+
+    int getUserCountByEmail(String email);
 }

@@ -55,8 +55,7 @@
   </div>
 </div>
 </body>
-<script type="text/javascript" src="<%=basePath%>/static/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/plugin/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/static/dist/js/npm.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user.js"></script>
 </html>

@@ -1,0 +1,14 @@
+.create-schedule-button {
+	float: left;
+  margin-top: 75px;
+  margin-left: 60px;
+}
+
+.schedule-table {
+  margin: 140px 0px 30px 60px;
+  width: 1171px;
+}
+
+td>a {
+    color: #000;
+}

@@ -7,7 +7,7 @@ import com.ntu.pms.model.User;
 
 public interface UserService {
 
-    User checkUser(User user);
+    UserDTO checkUser(UserDTO userDTO);
 
     ResultObjectDTO saveUser(User user);
 
@@ -15,7 +15,7 @@ public interface UserService {
 
     UserDTO getUserDTO(int id) throws BussinessException;
 
-    User getUser(int id) throws BussinessException;
+    User getUserById(int id) throws BussinessException;
 
     UserDTO updateUser(UserDTO userDTO) throws BussinessException;
 

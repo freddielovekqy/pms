@@ -10,4 +10,12 @@ public interface ProjectDao extends BaseDao<Project, Integer> {
     List<ProjectDTO> findProjectDTOByUser(int userId);
 
     List<ProjectDTO> findFiledProjectDTOByUser(int userId);
+
+    ProjectDTO getDTOById(int projectId);
+
+    void updateProjectUrl(int projectId, String newUrl);
+
+    ProjectDTO getProjectByUrl(String url);
+
+    List<Project> findAllProject();
 }

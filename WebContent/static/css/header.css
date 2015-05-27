@@ -164,7 +164,38 @@ a:hover {
 }
 
 #content {
-margin-top: 50px;
-background-color: #000;
+    margin-top: 50px;
+    background-color: #eee;
+    margin-right: 60px;
 }
 
+.alert-model {
+    margin: 0 auto;
+    margin-top: 9px;
+    position: relative;
+    width: 800px;
+}
+
+#profile .modal-dialog {
+    margin-right: 59px;
+    margin-top: 50px;
+    width: 120px;
+    font-size: 15px;
+}
+
+.modal-body {
+    padding: 10px 10px 5px 10px;
+}
+
+.modal-body>a {
+    margin: 10px 0px 5px 10px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    cursor: hand;
+    display: block;
+    color: #000;
+}
+
+.modal-body>a:hover {
+    color: #03a9f4;
+};

@@ -24,3 +24,15 @@ button
 	cursor: hand;
 	color: #03a9f4;
 }
+
+.alert-model {
+  margin-top: 9px;
+  position: fixed;
+  width: 800px;
+  top: 177px;
+  left: 300px;
+}
+
+.alert-model>button {
+    width: initial;
+}

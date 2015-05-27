@@ -22,8 +22,8 @@
 	height: 134px;
 	margin: 15px;
 	position: relative;
-	cursor: hand;
-	background-image: url(../image/project.jpg);
+	cursor: pointer;
+	background-image: url(http://localhost:8080/PMS/data/project.jpg);
 	display: inline-table;
 }
 

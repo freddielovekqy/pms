@@ -1,0 +1,282 @@
+.project-home-view {
+    position: relative;
+    margin: 70px auto 30px;
+    width: 1100px;
+    opacity: 1;
+}   
+
+.project-home-view .project-home-left {
+    position: relative;
+    margin-right: 400px;
+    width: 700px;
+}
+
+.project-home-view .project-home-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    padding-left: 20px;
+}
+
+.project-home-left .main-operation {
+    width: 700px;
+    height: 106px;
+}
+
+.main-operation .creater-operation {
+    margin-left: 90px;
+    margin-bottom: 20px;
+    height: 86px;
+    background-color: #fff;
+    box-shadow: rgba(0,0,0,.0470588)0 2px 3px 0;
+}
+
+.handler-wrap {
+    position: relative;
+    width: 25%;
+    float: left;
+    text-align: center;
+    height: 100%;
+}
+
+.handler-wrap>a {
+    display: inline-block;
+    margin: 15px 0;
+    color: #a6a6a6;
+    font-size: 17px;
+}
+
+.handler-wrap>a:hover {
+    color: #03a9f4;
+}
+
+.main-operation .avatar {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 10px 0;
+}
+
+.pull-left {
+    float: left!important;
+}
+.img-48 {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-size: 48px 48px;
+    background-color: #eee;
+}
+.pull-left {
+    float: left!important;
+}
+.img-circle {
+    border-radius: 50%;
+}
+
+.reviews-card-view {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.reviews-card-view .reviews-card {
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #fff;
+    min-height: 200px;
+}
+
+li {
+    list-style: none;
+}
+
+.no-dynamic {
+  padding-left: 100px;
+  padding-top: 40px;
+  font-size: 17px;
+  color: #a6a6a6;
+}
+
+.reviews-card-view .card-header {
+    color: #a6a6a6;
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 10px 15px 10px 5px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.reviews-card-view .card-content {
+    margin: 0 15px;
+    padding: 0;
+}
+
+.reviews-list {
+    padding: 0;
+    position: relative;
+}
+
+.reviews-list>li {
+    padding: 18px 0;
+}
+
+.open-detail .review-body {
+    margin: 0 0 0 40px;
+    padding-right: 80px;
+    cursor: pointer;
+    word-wrap: break-word;
+    height: 24px;
+}
+
+.review-body .review-title {
+    width: 40%;
+    float: left;
+    padding: 2px 10px 2px 0;
+    color: #a6a6a6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.review-title .review-executor {
+    margin-right: 8px;
+    color: #383838;
+}   
+
+.review-body .review-content {
+    color: #a6a6a6;
+    width: 60%;
+    margin-left: 40%;
+    padding: 2px 10px 2px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.open-detail .review-timeline {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+
+
+
+.project-home-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    padding-left: 20px;
+}
+
+.project-home-right .pin-wrap {
+    position: fixed;
+    top: 120px;
+    width: 380px;
+}
+
+.sprint-info-div {
+    position: relative;
+    margin-bottom: 20px;
+    display: block;
+    background-color: #fff;
+}
+
+.sprint-info-div .card-header {
+    color: #a6a6a6;
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 10px 15px 10px 5px;
+    line-height: 30px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.card-header>a {
+    color: #a6a6a6;
+    font-size: 16px;
+    float: right;
+}
+
+.card-header>a:hover {
+    color: #03a9f4;
+}
+
+.sprint-info-div .card-content {
+    margin: 0 15px;
+    padding: 0; 
+}
+
+.sprint-statistics-list {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    padding-left: 0px;
+}
+
+.sprint-statistics-list >li {
+    position: relative;
+    width: 33%;
+    float: left;
+    padding-left: 5px;
+}
+
+.statistic-wrap >a {
+    display: inline-block;
+    margin: 15px 0;
+    color: #a6a6a6;
+    cursor: pointer;
+}
+
+ .muted {
+    color: #a6a6a6;
+}
+
+.statistic-count {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 200;
+}
+
+.total-tasks {
+    color: #a6a6a6;
+}
+
+.done-tasks {
+    color: #4bd649;
+}
+
+.left-time {
+    color: #ed5955;
+}
+
+.pin-wrap .task-chart {
+    position: relative;
+    margin-bottom: 20px;
+    -webkit-box-shadow: rgba(0,0,0,.0470588)0 2px 3px 0;
+    display: block;
+    background-color: #fff;
+}
+
+.task-chart .card-header {
+    color: #a6a6a6;
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 10px 15px 10px 5px;
+    line-height: 30px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.task-chart .card-content {
+    margin: 0 15px;
+    padding: 0;
+    width: 350px;
+    height: 230px;
+}
+
+.sprint-name {
+  font-size: 15px;
+  color: #888;
+}
