@@ -35,6 +35,16 @@
         <property name="user" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
     </bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >  
+        <!-- set the max upload size1MB   1048576     -->  
+        <property name="maxUploadSize">  
+            <value>52428800</value>  
+        </property>  
+        <property name="maxInMemorySize">  
+            <value>2048</value>  
+        </property>  
+    </bean> 
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="pmsDataSource" />
@@ -42,7 +52,7 @@
         <property name="mapperLocations" value="classpath*:com/ntu/pms/model/*Mapper.xml" />
     </bean>
 
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"  destroy-method="clearCache">
         <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
     

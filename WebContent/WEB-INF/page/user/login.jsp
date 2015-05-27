@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=basePath %>/static/dist/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath %>/static/css/login.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath %>/static/css/user/login.css" />
 <title>Login</title>
 </head>
 <body>
@@ -55,8 +55,7 @@
   </div>
 </div>
 </body>
-<script type="text/javascript" src="<%=basePath%>/static/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/plugin/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/static/dist/js/npm.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user.js"></script>
 </html>

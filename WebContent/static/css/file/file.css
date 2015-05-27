@@ -1,0 +1,142 @@
+.file-main-div {
+    background-color: #fff;
+  width: 1100px;
+  margin: 80px 0px 0px 100px;
+}
+
+.library-header {
+  position: relative;
+  margin: 20px 15px 0 15px;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.library-title {
+  padding: 0 300px 0 0;
+  font-size: 18px;
+}
+
+.library-header-handler {
+  position: absolute;
+  top: 15px;
+    right: -91px;
+  margin-right: 106px;
+  margin-top: -14px;    
+}
+
+.library-header-handler>a {
+  display: inline-block;
+  line-height: 18px;
+  color: #03a9f4;
+}
+
+.add-folder {
+  color: #428bca;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+input[type=file] {
+  display: block;
+}
+.webuploader-element-invisible {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.fileUpload input.upload {  
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.library-handler-set {
+  position: relative;
+  padding: 15px 15px 14px 48px;
+  background-color: #fff;
+  margin: 0 15;
+}
+
+.library-info-header {
+  font-size: 15px;
+  color: #000;
+}
+
+.library-info-name {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.library-info-size {
+  display: block;
+  float: left;
+  width: 100px;
+  padding-right: 20px;
+}
+
+.library-info-author {
+  display: block;
+  float: left;
+  width: 150px;
+  padding-right: 20px;
+}
+
+.library-info {
+    font-size: 15px;
+    height: 60px;
+      border-top: 1px solid rgba(0,0,0,.12);
+        padding-top: 19px;
+        margin: 0 15px;
+}
+
+.icon-big-size {
+     font-size: 23px;
+  top: 5px;
+  color: #428bca;
+}
+
+.library-handler-set>a {
+    color: #000;
+      margin-top: -5px;
+}
+
+.library-handler-set>a:hover {
+    color: #03a9f4;
+}
+
+.edit-folder-icon {
+  margin-left: 130px;
+  
+}
+
+.remove-folder-icon {
+    margin-left: 20px;
+}
+
+.new-folder-model {
+    top: 100px;
+  width: 222px;
+  left: 179px;
+}
+
+.edit-folder-model {
+  top: 153px;
+  width: 222px;
+  left: -279px;
+}

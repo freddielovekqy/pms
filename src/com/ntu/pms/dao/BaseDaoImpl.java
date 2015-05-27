@@ -24,9 +24,9 @@ public abstract class BaseDaoImpl<T, K> extends SqlSessionDaoSupport {
         return clz;
     }
 
-    public Boolean add(T obj) {
-        getSqlSession().insert(this.getClz().getName() + SQL_ID_ADD, obj);
-        return Boolean.TRUE;
+    public int add(T obj) {
+        int id = getSqlSession().insert(this.getClz().getName() + SQL_ID_ADD, obj);
+        return id;
     }
 
     public Boolean delete(K id) {

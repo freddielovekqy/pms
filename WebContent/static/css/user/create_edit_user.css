@@ -1,0 +1,38 @@
+body
+{
+	margin: 0;
+}
+
+.registerForm
+{
+	width: 330px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+button
+{
+	width: 100%;
+}
+
+.loginButton
+{
+	margin-top: 20px;
+}
+
+.form-group>span{
+	cursor: hand;
+	color: #03a9f4;
+}
+
+.alert-model {
+  margin-top: 9px;
+  position: fixed;
+  width: 800px;
+  top: 177px;
+  left: 300px;
+}
+
+.alert-model>button {
+    width: initial;
+}

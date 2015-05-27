@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.ntu.pms.model.ProjectUser">
+    <resultMap type="ProjectUser" id="projectUserMap">
+        <id column="id" property="id"/>
+        <result column="project_id" property="projectId"/>
+        <result column="user_id" property="userId"/>
+        <result column="is_manager" property="isManager"/>
+        <result column="is_active" property="isActive"/>
+    </resultMap>
+    
+    <resultMap type="com.ntu.pms.dto.ProjectUserDTO" id="projectUserDTOMap">
+        <id column="id" property="id"/>
+        <result column="project_id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_image" property="userImage"/>
+        <result column="user_email" property="userEmail"/>
+        <result column="user_job_number" property="jobNumber"/>
+        <result column="is_manager" property="isManager"/>
+        <result column="is_active" property="isActive"/>
+    </resultMap>
+    
+    <select id="getDTOById" parameterType="Integer" resultMap="projectUserDTOMap">
+        <![CDATA[
+            SELECT
+                pu.*, p.name project_name,
+                u.name user_name, u.image user_image, u.email user_email, u.job_number user_job_number
+            FROM
+                _project_user pu
+                LEFT OUTER JOIN _project p ON p.id = pu.project_id
+                LEFT OUTER JOIN _user u ON u.id = pu.user_id
+            WHERE
+                pu.id = #{id}
+                AND pu.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getProjectUserDTO" parameterType="Map" resultMap="projectUserDTOMap">
+        <![CDATA[
+            SELECT
+                pu.*, p.name project_name,
+                u.name user_name, u.image user_image, u.email user_email, u.job_number user_job_number
+            FROM
+                _project_user pu
+                LEFT OUTER JOIN _project p ON p.id = pu.project_id
+                LEFT OUTER JOIN _user u ON u.id = pu.user_id
+            WHERE
+                pu.project_id = #{projectId}
+                AND pu.user_id = #{userId}
+                AND pu.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="findAllProjectUser" resultMap="projectUserDTOMap">
+        <![CDATA[
+            SELECT * FROM _project_user WHERE is_active = 1
+        ]]>
+    </select>
+    
+    <select id="findProjectUsersByProject" parameterType="Integer" resultMap="projectUserMap">
+        <![CDATA[
+            SELECT * FROM _project_user WHERE project_id = #{projectId} AND is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getProjectUserDTOsByProjectId" parameterType="Integer" resultMap="projectUserDTOMap">
+        <![CDATA[
+            SELECT
+                pu.*, p.name project_name,
+                u.name user_name, u.image user_image, u.email user_email, u.job_number user_job_number
+            FROM
+                _project_user pu
+                LEFT OUTER JOIN _project p ON p.id = pu.project_id
+                LEFT OUTER JOIN _user u ON u.id = pu.user_id
+            WHERE
+                pu.project_id = #{projectId}
+                AND pu.is_active = 1
+        ]]>
+    </select>
+    
+    <update id="updateMemberPrivilege" parameterType="Map">
+        <![CDATA[
+            UPDATE _project_user SET is_manager = #{isManager} WHERE id = #{projectUserId}
+        ]]>
+    </update>
+    
+    <insert id="add" parameterType="ProjectUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        <![CDATA[
+            INSERT INTO 
+                _project_user(user_id, project_id, is_manager, is_active)
+            VALUES(#{userId}, #{projectId}, #{isManager}, #{isActive})
+        ]]>
+    </insert>
+    
+    <update id="delete" parameterType="Integer">
+        <![CDATA[
+            UPDATE _project_user SET is_active = 0 WHERE project_id = #{projectId} AND user_id = #{userId}
+        ]]>
+    </update>
+</mapper>

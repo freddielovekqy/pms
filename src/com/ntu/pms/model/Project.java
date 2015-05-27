@@ -11,7 +11,9 @@ public class Project extends BaseModel {
     private String description;
     private Date createTime;
     private int creatorId;
-    private int state;
+    private int state = 1;
+    private int isPublic;
+    private String addMemberUrl;
 
     public int getId() {
         return id;
@@ -61,12 +63,28 @@ public class Project extends BaseModel {
         this.state = state;
     }
 
+    public int getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(int isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public String getAddMemberUrl() {
+        return addMemberUrl;
+    }
+
+    public void setAddMemberUrl(String addMemberUrl) {
+        this.addMemberUrl = addMemberUrl;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Project [id=").append(id).append(", name=").append(name).append(", description=")
                 .append(description).append(", createTime=").append(createTime).append(", creatorId=")
-                .append(creatorId).append(", state=").append(state);
-
+                .append(creatorId).append(", state=").append(state).append(", isPublic=").append(isPublic);
         return builder.toString();
     }
 }

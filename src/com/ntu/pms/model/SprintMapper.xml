@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.ntu.pms.model.Sprint">
+    <resultMap type="Sprint" id="sprintMap">
+        <id column="id" property="id"/>
+        <result column="serial_number" property="serialNumber"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="is_current" property="isCurrent"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="project_id" property="projectId"/>
+        <result column="state" property="state"/>
+        <result column="creator" property="creatorId"/>
+    </resultMap>
+
+    <resultMap type="com.ntu.pms.dto.SprintDTO" id="sprintDTOMap">
+        <id column="id" property="id"/>
+        <result column="serial_number" property="serialNumber"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="is_current" property="isCurrent"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="project_id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+        <result column="state" property="state"/>
+        <result column="creator" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+    </resultMap>
+    
+    <select id="getById" parameterType="Integer" resultMap="sprintMap">
+        <![CDATA[
+            SELECT * FROM _sprint WHERE id = #{sprintId}
+        ]]>
+    </select>
+    
+    <select id="getDTOById" parameterType="Integer" resultMap="sprintDTOMap">
+        <![CDATA[
+            SELECT  
+                s.*, p.name project_name, u.name creator_name
+            FROM
+                _sprint s
+                LEFT OUTER JOIN _project p ON s.project_id = p.id
+                LEFT OUTER JOIN _user u ON s.creator = u.id
+            WHERE
+                s.id = #{sprintId}
+        ]]>
+    </select>
+    
+    <select id="findSprintDTOByProject" parameterType="Integer" resultMap="sprintDTOMap">
+        <![CDATA[
+            SELECT  
+                s.*, p.name project_name, u.name creator_name
+            FROM
+                _sprint s
+                LEFT OUTER JOIN _project p ON s.project_id = p.id
+                LEFT OUTER JOIN _user u ON s.creator = u.id
+            WHERE
+                s.project_id = #{projectId}
+            ORDER BY s.id DESC
+        ]]>
+    </select>
+    
+    <select id="getCurrnetSprintId" parameterType="Integer" resultType="Integer">
+        <![CDATA[
+            SELECT id FROM _sprint WHERE project_id = #{projectId} and state <> 0 AND is_current = 1
+        ]]>
+    </select>
+    
+    <select id="getRestSprintTime" parameterType="Map" resultType="Integer">
+        <![CDATA[
+            SELECT
+                TO_DAYS(end_date) - TO_DAYS(NOW())
+            FROM 
+                _sprint
+            WHERE
+                project_id = #{projectId}
+                AND id = #{sprintId}
+        ]]>
+    </select>
+    
+    <update id="updateSprintEndDate" parameterType="Map">
+        <![CDATA[
+            UPDATE _sprint SET end_date = #{endDate} WHERE id = #{sprintId}
+        ]]>
+    </update>
+    
+    <update id="finishOldSprint" parameterType="Integer">
+        <![CDATA[
+            UPDATE _sprint SET is_current = 0 WHERE project_id = #{projectId}
+        ]]>
+    </update>
+
+    <insert id="add" parameterType="Sprint" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        <![CDATA[
+            INSERT INTO _sprint(
+                    serial_number, name, description, is_current, start_date, end_date, project_id,
+                    state, creator)
+            VALUES(#{serialNumber}, #{name}, #{description}, #{isCurrent}, #{startDate}, #{endDate}, #{projectId},
+                #{state}, #{creatorId})
+        ]]>
+    </insert>
+</mapper>

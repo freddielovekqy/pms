@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.ntu.pms.model.Schedule">
+    <resultMap type="Schedule" id="scheduleMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="place" property="place"/>
+        <result column="start_time" property="startTime"/>
+        <result column="time" property="time"/>
+        <result column="type" property="type"/>
+        <result column="project_id" property="projectId"/>
+        <result column="creator" property="creatorId"/>
+        <result column="is_active" property="isActive"/>
+    </resultMap>
+    
+    <resultMap type="com.ntu.pms.dto.ScheduleDTO" id="scheduleDTOMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="place" property="place"/>
+        <result column="start_time" property="startTime"/>
+        <result column="time" property="time"/>
+        <result column="type" property="type"/>
+        <result column="project_id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+        <result column="creator" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="is_active" property="isActive"/>
+    </resultMap>
+    
+    <select id="getById" parameterType="Integer" resultMap="scheduleMap">
+        <![CDATA[
+            SELECT * FROM _schedule WHERE id = #{scheduleId} AND is_active = 1
+        ]]>
+    </select>
+    
+    <select id="getDTOById" parameterType="Integer" resultMap="scheduleDTOMap">
+        <![CDATA[
+            SELECT
+                s.*, p.name project_name, u.name creator_name
+            FROM
+                _schedule s
+                LEFT OUTER JOIN _project p ON p.id = s.project_id
+                LEFT OUTER JOIN _user u ON u.id = s.creator
+            WHERE
+                s.id = #{scheduleId}
+                AND s.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="findAllScheduleDTOsByProjectId" parameterType="Integer" resultMap="scheduleDTOMap">
+        <![CDATA[
+            SELECT
+                s.*, p.name project_name, u.name creator_name
+            FROM
+                _schedule s
+                LEFT OUTER JOIN _project p ON p.id = s.project_id
+                LEFT OUTER JOIN _user u ON u.id = s.creator
+            WHERE
+                s.project_id = #{projectId}
+                AND s.is_active = 1
+        ]]>
+    </select>
+    
+    <select id="findUnfinishedScheduleDTOsByProjectId" parameterType="Integer" resultMap="scheduleDTOMap">
+        <![CDATA[
+            SELECT
+                s.*, p.name project_name, u.name creator_name
+            FROM
+                _schedule s
+                LEFT OUTER JOIN _project p ON p.id = s.project_id
+                LEFT OUTER JOIN _user u ON u.id = s.creator
+            WHERE
+                s.project_id = #{projectId}
+                AND s.is_active = 1
+                AND TO_DAYS(NOW()) - TO_DAYS(start_time) <= 0
+        ]]>
+    </select>
+    
+    <insert id="add" parameterType="Schedule" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        <![CDATA[
+            INSERT INTO _schedule(name, description, place, start_time, time, type, project_id, creator, is_active)
+            VALUES(#{name}, #{description}, #{place}, #{startTime}, #{time}, #{type}, #{projectId}, #{creatorId}, #{isActive})
+        ]]>
+    </insert>
+    
+    <update id="update" parameterType="Schedule">
+        <![CDATA[
+            UPDATE _schedule SET name = #{name}, description = #{description}, start_time = #{startTime}, time = #{time},
+                place = #{place}
+            WHERE id = #{id}
+        ]]>
+    </update>
+    
+    <update id="delete" parameterType="Integer">
+        <![CDATA[
+            UPDATE _schedule SET is_active = 0 WHERE id = #{scheduleId}
+        ]]>
+    </update>
+</mapper>

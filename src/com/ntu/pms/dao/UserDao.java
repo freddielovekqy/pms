@@ -1,5 +1,6 @@
 package com.ntu.pms.dao;
 
+import com.ntu.pms.dto.UserDTO;
 import com.ntu.pms.model.User;
 
 public interface UserDao extends BaseDao<User, Integer> {
@@ -9,4 +10,8 @@ public interface UserDao extends BaseDao<User, Integer> {
     String checkUser(String email);
 
     User getUserByEmail(String email);
+
+    UserDTO getUserDTOById(int id);
+
+    int getUserCountByEmail(String email);
 }

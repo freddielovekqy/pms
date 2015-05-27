@@ -1,0 +1,120 @@
+.member-bar {
+    position: fixed;
+    z-index: 65;
+    width: 260px;
+    top: 50px;
+    right: -200px;
+    bottom: 0;
+    background-color: #fafafa;
+    border-left: 1px solid #e6e6e6;
+}
+
+.member-bar .add-member-div {
+      width: 100%;
+  height: 60px;
+    padding-top: 2px;
+}
+
+.add-member-div .add-member-info {
+      float: left;
+  margin-top: 9px;
+  margin-left: 10px;
+}
+
+.add-member-info .copy-sign {
+    cursor: pointer;
+}
+
+.add-member-info .add-member-url {
+    color: #a6a6a6;
+    font-size: 14px;
+    text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px;
+  white-space: nowrap;
+  display: block;
+}
+
+.add-member {
+    padding: 5px 5px 2px 4px;
+    cursor: pointer;
+}
+
+.member {
+    display: block;
+    width: 38px;
+    height: 38px;
+}
+
+.member-bar-toggler {
+  display: block;
+  height: 50px;
+  width: 60px;
+  line-height: 50px;
+  text-align: center;
+  -webkit-transition: width 218ms ease;
+  -o-transition: width 218ms ease;
+  transition: width 218ms ease;
+  cursor: pointer;
+  color: #a6a6a6;
+}
+
+.member-li {
+   height: 58px;
+  cursor: pointer;
+  background-color: #eee;
+  padding-top: 10px;
+  padding-left: 11px;
+  margin-bottom: 1px;
+}
+
+.member-li .member-info {
+  top: 20px;
+  margin-top: -36px;
+  margin-left: 70px;
+}
+
+.member-info .member-name {
+    font-weight: bold;
+}
+
+.member-info .member-email {
+    color: #a6a6a6;
+    font-size: 13px;
+}
+
+.project-user-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+.project-user-footer .more-info {
+    margin: 19px;
+}
+
+.url-label {
+    margin-top: 10px;
+}
+
+.refresh-url {
+      top: -23px;
+  left: 500px;
+  cursor: pointer;
+}
+
+.member-mamager-li {
+    background-color: #fff;
+    cursor: auto;
+}
+
+.member-mamager-li .member-button-div {
+      display: inline;
+  float: left;
+  top: 20px;
+  margin-top: -36px;
+    margin-left: 322px;
+}
